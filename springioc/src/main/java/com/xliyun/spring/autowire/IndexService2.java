@@ -1,27 +1,30 @@
 package com.xliyun.spring.autowire;
 
+import org.springframework.beans.BeansException;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 
 /**
-  @Autowired
-  注解里面用@Autowired是默认使用byType方式的，如果一个接口有多个实现，spring在自动装载类的时候会报错。
-  byType没找到的话会根据属性名去找，比如有IndexDaoImpl和IndexDaoImpl2两个实现，一开始会根据类型去找，有两个实现，再按照属性名去找IndexDaoImpl
-
- @Resource
- @Resource默认是根据属性名字去匹配，比如有IndexDaoImpl和IndexDaoImpl2两个实现，spring就会根据属性名去加载IndexDaoImpl
- 当然@Resource也可以直接指定类型@Resource(type = IndexDaoImpl.class)
- 也可以指定name，比如IndexDaoImpl的beanName就是首字符变为小写的indexDaoImpl
+  直接在类中通过ApplicationContext拿到原型模式的bean
  */
 @Service("indexService2")
-public class IndexService2 {
+public class IndexService2  implements ApplicationContextAware {
 
     @Resource(name = "indexDaoImpl")
     private IndexDao indexDaoImpl;
 
+    private ApplicationContext applicationContext;
+
     public void service(){
+        IndexDao dao= (IndexDao) applicationContext.getBean("indexDaoImpl");
         System.out.println("service的hashCode:"+this.hashCode());
-        System.out.println("indexDao的hashCode:"+indexDaoImpl.hashCode());
+        System.out.println("indexDao的hashCode:"+dao.hashCode());
+    }
+
+    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+        this.applicationContext=applicationContext;
     }
 }

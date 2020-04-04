@@ -17,5 +17,6 @@ public class Test {
         service.service();
         System.out.println(service.hashCode());
         System.out.println(service2.hashCode());
+
     }
 }

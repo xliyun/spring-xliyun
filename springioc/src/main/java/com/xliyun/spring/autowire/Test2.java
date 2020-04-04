@@ -14,7 +14,15 @@ public class Test2 {
        IndexService2 service= (IndexService2) annotationConfigApplicationContext.getBean("indexService2");
         service.service();
         IndexService2 service2= (IndexService2) annotationConfigApplicationContext.getBean("indexService2");
-        service.service();
+        service2.service();
+
+        System.out.println("=================");
+
+
+        IndexService3 service3= (IndexService3) annotationConfigApplicationContext.getBean("indexService3");
+        service3.service();
+        IndexService3 service4= (IndexService3) annotationConfigApplicationContext.getBean("indexService3");
+        service4.service();
 
     }
 }
