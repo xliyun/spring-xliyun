@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"
+        default-autowire="byName"
+>
+    <!--default-autowire="byType"  如果有两个类型相同的bean，就会报错，spring不知道应该自动装配哪个  -->
+    <!--default-autowire="byName"  从indexSerice中找set+bean名 dao就找setDao dao2就找setDao2 -->
+    <bean id="dao" class="com.xliyun.spring.autowire.IndexDaoImpl">
+    </bean>
+
+    <bean id="dao2" class="com.xliyun.spring.autowire.IndexDaoImpl2">
+    </bean>
+
+    <!-- autowire是可以单独指定的 -->
+    <bean id="indexService" class="com.xliyun.spring.autowire.IndexService" autowire="constructor">
+
+    </bean>
+</beans>

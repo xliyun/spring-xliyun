@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:c="http://www.springframework.org/schema/c"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        https://www.springframework.org/schema/context/spring-context.xsd"
+>
+    <!-- 开启注解，开启扫描-->
+    <context:annotation-config></context:annotation-config>
+    <context:component-scan base-package="com"></context:component-scan>
+    
+    <bean id="dao" class="com.xliyun.dao.IndexDaoImpl" p:str="xxx">
+        <!-- IOC 属性注入 -->
+        <property name="str" value="str"></property>
+    </bean>
+
+    <bean id="service" class="com.xliyun.dao.IndexService">
+        <!--IOC set 方法注入-->
+        <property name="dao" ref="dao"></property>
+        <!--IOC 构造方法注入-->
+        <constructor-arg ref="dao"></constructor-arg>
+    </bean>
+
+
+</beans>
