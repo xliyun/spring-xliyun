@@ -13,7 +13,7 @@ import javax.annotation.Resource;
  */
 @Service("indexService3")
 public class IndexService3 {
-    @Lookup
+    @Lookup(value = "indexDaoImpl")
     public IndexDao getIndexDaoImpl(){
         return null;
     }
@@ -26,6 +26,5 @@ public class IndexService3 {
         System.out.println("service的hashCode: "+this.hashCode());
         System.out.println("indexDao的hashCode: "+getIndexDaoImpl().hashCode());
     }
-
 
 }

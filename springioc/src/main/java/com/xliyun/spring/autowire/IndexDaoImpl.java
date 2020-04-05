@@ -1,5 +1,6 @@
 package com.xliyun.spring.autowire;
 
+import org.springframework.context.annotation.Profile;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Repository;
 
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Repository;
  * @author: xiaoliyu
  * @date: 2020-04-02 22:35
  */
+@Profile("dao1")
 @Repository
 @Scope("prototype")
 public class IndexDaoImpl implements IndexDao {

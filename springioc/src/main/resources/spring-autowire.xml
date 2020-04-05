@@ -9,7 +9,8 @@
     <bean id="dao" class="com.xliyun.spring.autowire.IndexDaoImpl">
     </bean>
 
-    <bean id="dao2" class="com.xliyun.spring.autowire.IndexDaoImpl2">
+    <!-- lazy-init懒加载  depends-on 要dao的加载在dao2之前-->
+    <bean id="dao2" class="com.xliyun.spring.autowire.IndexDaoImpl2" lazy-init="false" depends-on="dao">
     </bean>
 
     <!-- autowire是可以单独指定的 -->
