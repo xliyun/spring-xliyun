@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <bean id="xmlBean" class="com.xliyun.spring.aop.aspect.XMLAopBean"></bean>
+    <!-- aop配置 -->
+    <aop:config>
+        <!-- 声明一个切点 -->
+        <aop:pointcut id="allDao" expression="execution(* com.xliyun.spring.aop.aspect.*.*(..))"/>
+        <!--定义一个切面，这个切面和xmlBean绑定，-->
+        <aop:aspect id="aspect" ref="xmlBean">
+            <!--声明一个通知 使用allDao切点的匹配规则，被匹配上时，使用xmlBean的方法before-->
+            <aop:before pointcut-ref="allDao" method="before"></aop:before>
+        </aop:aspect>
+    </aop:config>
+</beans>
