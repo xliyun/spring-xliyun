@@ -1,2 +1,7 @@
 /.idea/
 /springioc/target/
+/springaop/target/
+/springx/target/
+/proxy/target/
+/proxy/src/main/webapp/
+/factorybean/target/classes/
